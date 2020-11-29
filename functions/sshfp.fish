@@ -1,7 +1,6 @@
+# author: Danny Fullerton - Mantor Organization www.mantor.org
+# license: public domain
 function sshfp -a fqdn -d 'A secure way to create SSHFP records'
-    # author: Danny Fullerton - Mantor Organization www.mantor.org
-    # license: public domain
-
     test -z $fqdn
     and begin
         echo >&2 Usage: (status function) FQDN

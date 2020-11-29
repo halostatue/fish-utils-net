@@ -10,7 +10,8 @@ from my zsh dotfiles or from other dotfiles found over the years.
 Install with [Fisher][] (recommended):
 
 ```fish
-fisher add halostatue/fish-utils-net
+fisher add halostatue/fish-utils-net # fisher 3.x
+fisher install halostatue/fish-utils-net # fisher 4.0+
 ```
 
 <details>

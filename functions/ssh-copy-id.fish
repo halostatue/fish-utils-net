@@ -1,9 +1,8 @@
+# Shell script to install your public key on a remote machine. Takes the
+# remote machine name as an argument. Obviously, the remote machine must
+# accept password authentication or one of the other keys in your ssh-agent
+# for this to work.
 function ssh-copy-id -d 'Install your public key on a remote machine.'
-    # Shell script to install your public key on a remote machine. Takes the
-    # remote machine name as an argument. Obviously, the remote machine must
-    # accept password authentication or one of the other keys in your ssh-agent
-    # for this to work.
-
     argparse -N1 -xa,i 'h/help' 'a-agent' 'i-id=+' -- $argv
     or begin
         ssh-copy-id:usage (status function) >&2
