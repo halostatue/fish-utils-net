@@ -3,7 +3,7 @@
 # accept password authentication or one of the other keys in your ssh-agent
 # for this to work.
 function ssh-copy-id -d 'Install your public key on a remote machine.'
-    argparse -N1 -xa,i 'h/help' 'a-agent' 'i-id=+' -- $argv
+    argparse -N1 -xa,i h/help a-agent 'i-id=+' -- $argv
     or begin
         ssh-copy-id:usage (status function) >&2
         return 1
@@ -43,11 +43,12 @@ function ssh-copy-id -d 'Install your public key on a remote machine.'
 
     if not set -q identities[1]
         echo >&2 Error: No identities found.
-        return ssh-copy-id:usage (status function) 1
+        ssh-copy-id:usage (status function)
+        return 1
     end
 
     printf '%s\n' (string unescape $identities) |
-    ssh $argv 'umask 077; test -d ~/.ssh || mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys'
+        ssh $argv 'umask 077; test -d ~/.ssh || mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys'
     or return 10
 
     echo "Now try logging into the machine with \"ssh '$argv'\" and check in:
