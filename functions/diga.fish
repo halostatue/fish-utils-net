@@ -1,6 +1,8 @@
-function diga -a host -d 'Fast query of DNS results from dig'
-    test -z $host; and begin
-        echo >&2 (status function)': expected host'
+# @halostatue/fish-utils/functions/diga.fish:v2.0.0
+
+function diga -d 'Simplified dig lookup'
+    if ! set -q argv[1]
+        echo >&2 (status function): expected host
         return 1
     end
 

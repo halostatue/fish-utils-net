@@ -1,4 +1,4 @@
-# MIT License
+# MIT Licence
 
 Copyright © 2020 Austin Ziegler
 Portions copyright © Carlos Becker <http://carlosbecker.com>

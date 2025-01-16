@@ -1,5 +1,6 @@
+# @halostatue/fish-utils/functions/run_from_ssh.fish:v2.0.0
+
 function run_from_ssh -d 'Return true if this process was run from sshd'
-    set -l parent (ps -o ppid= %self)
-    set -l ppidsshd (ps x | grep $parent | grep sshd | grep -v grep)
-    test -z $ppidsshd
+    set --function ppid (ps -o ppid= $fish_pid)
+    ps -x | string match --entire $ppid | string match --entire --quiet sshd
 end

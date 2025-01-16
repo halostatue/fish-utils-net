@@ -1,8 +1,28 @@
-function addr -d 'Shows this computer\'s IP addresses'
-    argparse '4/ipv4' '6/ipv6' 'l/local=?' 'r/remote' 'h/help' 'v/verbose' \
-        -- $argv
+# @halostatue/fish-utils/functions/addr.fish:v2.0.0
 
-    if set -q _flag_help
+function addr::local
+    set --function family (string escape --style regex $argv[1])
+    set --erase argv[1]
+
+    if command -v ifconfig
+        ifconfig $argv
+    else if command -v ip
+        ip addr
+    else
+        echo >&2 "Neither ifconfig nor ip is installed"
+        return 1
+    end | string replace --filter --regex '^.*'$family'\b\s+([\d.:]+).*$' '$1'
+end
+
+function addr::remote
+    dig +short @resolver1.opendns.com myip.opendns.com
+end
+
+function addr -d 'Shows this computer\'s IP addresses with ifconfig'
+    argparse 4/ipv4 6/ipv6 'l/local=?' r/remote h/help v/verbose -- $argv
+    or return 1
+
+    if set --query _flag_help
         echo 'Usage: '(status function)' [options]
 
 Shows this computer\'s IP addresses. By default, shows both local and remote
@@ -18,36 +38,33 @@ Options
         return
     end
 
-    if set -q _flag_local; or not set -q _flag_remote
-        set -q _flag_local; or set _flag_local -a
+    if set --query _flag_local || ! set --query _flag_remote
+        set --local iface -a
+        set --query _flag_local
+        and set interface $_flag_local
 
-        if set -q _flag_ipv4; or not set -q _flag_ipv6
-            if set -q _flag_verbose
-
-                echo 'Local IPv4:' (ifconfig $_flag_local |
-                      string replace -f -r '^\s*inet (\S+).*$' '$1')
+        if set --query _flag_ipv4 || ! set --query _flag_ipv6
+            if set --query _flag_verbose
+                echo "Local IPv4:" (addr::local inet $iface)
             else
-                ifconfig $_flag_local |
-                string replace -f -r '^\s*inet (\S+).*$' '$1'
+                addr::local inet $iface
             end
         end
 
-        if set -q _flag_ipv6; or not set -q _flag_ipv4
+        if set --query _flag_ipv6; or not set --query _flag_ipv4
             if set -q _flag_verbose
-                echo 'Local IPv6:' (ifconfig $_flag_local |
-                    string replace -f -r '^\s*inet6 (\S+).*$' '$1')
+                echo 'Local IPv6:' (addr::local inet6 $iface)
             else
-                ifconfig $_flag_local |
-                string replace -f -r '^\s*inet6 (\S+).*$' '$1'
+                addr::local inet6 $iface
             end
         end
     end
 
     if set -q _flag_remote; or not set -q _flag_local
         if set -q _flag_verbose
-            echo 'Remote:' (dig +short myip.opendns.com @resolver1.opendns.com)
+            echo 'Remote:' (addr::remote)
         else
-            dig +short myip.opendns.com @resolver1.opendns.com
+            addr::remote
         end
     end
 end

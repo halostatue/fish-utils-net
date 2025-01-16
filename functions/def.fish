@@ -1,13 +1,19 @@
-# Idea found on http://onethingwell.org; fixed up a little to handle another
-# error case and show usage.
-#
-# Originally from:
-# http://vikros.tumblr.com/post/23750050330/cute-little-function-time
-function def -a word -d "Get a word's definition from dict.org"
-    test -z $word; and begin
-        echo >&2 (status function)': expected a WORD to define.'
-        return 1
+# @halostatue/fish-utils/functions/def.fish:v2.0.0
+
+# Originally from: http://vikros.tumblr.com/post/23750050330/cute-little-function-time
+function def --description "Define a word from dict.org"
+    argparse --min-args 1 --name (status function) p/pager -- $argv
+    or return 1
+
+    set --function pager cat
+
+    if set --query _flag_pager
+        if set --query PAGER
+            set pager $PAGER
+        else
+            set pager less
+        end
     end
 
-    curl 'dict://dict.org/d:'$word
+    curl -Ss "dict://dict.org/d:$argv[1]" | $pager
 end
