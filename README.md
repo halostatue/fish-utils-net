@@ -1,31 +1,21 @@
 # halostatue/fish-utils-net
 
-Network and SSH utility functions for [fish shell][]. Most have been ported
-from my zsh dotfiles or from other dotfiles found over the years.
+[![Version][version]](https://github.com/halostatue/fish-utils-net/releases)
 
-[![Version][]][]
+Network and SSH utility functions for [fish shell][fish shell]. Most have been
+ported from my zsh dotfiles or from other dotfiles found over the years.
 
 ## Installation
 
-Install with [Fisher][] (recommended):
+Install with [Fisher][fisher] (recommended):
 
 ```fish
-fisher add halostatue/fish-utils-net # fisher 3.x
 fisher install halostatue/fish-utils-net # fisher 4.0+
 ```
 
-<details>
-<summary>Not using a package manager?</summary>
-
----
-
-Copy `functions/*.fish` to your fish configuration directory preserving the
-directory structure.
-</details>
-
 ### System Requirements
 
-- [fish][] 3.0+
+- [fish][fish] 3.4+
 
 ## Functions
 
@@ -99,24 +89,32 @@ Create the text required for SSHFP DNS records (SSH fingerprint) for a host.
 
 ## sshnew
 
-Connect to an SSH server as a new connection (`StrictHostKeyChecking` is
-off). This should only be used on trusted servers as it skips host key
-checking. All parameters are passed to `ssh`.
+Connect to an SSH server as a new connection (`StrictHostKeyChecking` is off).
+This should only be used on trusted servers as it skips host key checking. All
+parameters are passed to `ssh`.
 
 ## sshtmp, sftptmp, scptmp
 
-Connect to an SSH server as a temporary connection (`StrictHostKeyChecking`
-is off and the host is not written to the SSH hosts file). This should only
-be used on trusted transient servers (such as CI debug servers) as it skips
-host key checking. All parameters are passed to `ssh`, `sftp`, or `scp` as
-appropriate.
+Connect to an SSH server as a temporary connection (`StrictHostKeyChecking` is
+off and the host is not written to the SSH hosts file). This should only be used
+on trusted transient servers (such as CI debug servers) as it skips host key
+checking. All parameters are passed to `ssh`, `sftp`, or `scp` as appropriate.
 
 ## License
 
-[MIT](LICENCE.md)
+[MIT](./LICENCE.md)
+
+## Change Log
+
+[CHANGELOG](./CHANGELOG.md)
+
+## Contributing
+
+- [Contributing](./CONTRIBUTING.md)
+- [Contributors](./CONTRIBUTORS.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
 
 [fish shell]: https://fishshell.com "friendly interactive shell"
-[Version]: https://img.shields.io/github/tag/halostatue/fish-utils-net.svg?label=Version
-[![Version][]]: https://github.com/halostatue/fish-utils-net/releases
-[Fisher]: https://github.com/jorgebucaran/fisher
+[version]: https://img.shields.io/github/tag/halostatue/fish-utils-net.svg?label=Version
+[fisher]: https://github.com/jorgebucaran/fisher
 [fish]: https://github.com/fish-shell/fish-shell
