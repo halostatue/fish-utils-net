@@ -1,6 +1,6 @@
 # @halostatue/fish-utils/functions/def.fish:v2.0.0
 
-# Originally from: http://vikros.tumblr.com/post/23750050330/cute-little-function-time
+# Originally from: https://vikros.tumblr.com/post/23750050330/cute-little-function-time
 function def --description "Define a word from dict.org"
     argparse --min-args 1 --name (status function) p/pager -- $argv
     or return 1

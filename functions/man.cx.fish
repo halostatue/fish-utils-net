@@ -1,7 +1,7 @@
 # @halostatue/fish-utils/functions/man.cx.fish:v2.0.0
 
 function man.cx -d 'Open a manpage in man.cx'
-    # Copyright (c) 2010 by Ryan Tomayko <http://tomayko.com/about>
+    # Copyright (c) 2010 by Ryan Tomayko <https://tomayko.com/about>
     # This is Free Software distributed under the terms of the MIT license
     argparse h/help -- $argv
     or return 1

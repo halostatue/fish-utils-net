@@ -3,8 +3,8 @@
 - SPDX-License-Identifier: [MIT][mit]
 
 - Copyright © 2020-2025 Austin Ziegler
-- Portions copyright © Carlos Becker <http://carlosbecker.com>
-- Portions copyright © 2010 by Ryan Tomayko <http://tomayko.com/about>
+- Portions copyright © Carlos Becker <https://carlosbecker.com>
+- Portions copyright © 2010 by Ryan Tomayko <https://tomayko.com/about>
 
 The software in this repository is made available under the MIT license.
 
