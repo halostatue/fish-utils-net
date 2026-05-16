@@ -22,15 +22,22 @@ jobs:
 
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+        uses: step-security/harden-runner@a5ad31d6a139d249332a2605b85202e8c0b78450 # v2.19.1
         with:
           egress-policy: block
+          allow-sudo: false
           allowed-endpoints: >
+            _http._tcp.azure.archive.ubuntu.com:443
+            _https._tcp.esm.ubuntu.com:443
+            _https._tcp.motd.ubuntu.com:443
+            _https._tcp.packages.microsoft.com:443
+            _https._tcp.ppa.launchpadcontent.net:443
             api.github.com:443
             api.launchpad.net:443
             azure.archive.ubuntu.com:80
             esm.ubuntu.com:443
             github.com:443
+            motd.ubuntu.com:443
             packages.microsoft.com:443
             ppa.launchpadcontent.net:443
             raw.githubusercontent.com:443
@@ -40,11 +47,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: fish-shop/install-fish-shell@939056556c2bfd55b3e2c039e9d34b237c0b9d5b # v2.1.11
-      - uses: fish-shop/indent-check@82531182f7b5431da27f590467d4774bab1c1eec # v2.2.102
-      - uses: fish-shop/syntax-check@27c94ee9456333e716f92b50e0f99effd768e0ee # v2.2.100
-      - uses: fish-shop/install-plugin@8e0e56ba1ac1a37098ec523878f8f1c2d0306177 # v2.3.104
+      - uses: fish-shop/install-fish-shell@fe67e809bbaa60cd967a424635fd5baed7e59e63 # v2.1.13
+      - uses: fish-shop/indent-check@40900dadd983f5747a6e5fc4d80f9e3d5ce64c6e # v2.2.104
+      - uses: fish-shop/syntax-check@7566d3ae834a316caf3adc590743ef5d90416c0a # v2.2.102
+      - uses: fish-shop/install-plugin@54ee6568771da6525643d7f97d371a1b117a0aff # v2.3.106
         with:
           plugin-manager: fisher
           plugins: IlanCosman/clownfish
-      - uses: fish-shop/run-fishtape-tests@b9427c3b6e670abc1c70c41a3cf46b8f2b67c5d5 # v2.3.104
+      - uses: fish-shop/run-fishtape-tests@b8a56010ff103dd7ebe8e068bae0a7e70c1c3ad8 # v2.3.106
