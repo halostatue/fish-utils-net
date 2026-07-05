@@ -1,9 +1,15 @@
 # halostatue/fish-utils-net
 
 [![Version][version]](https://github.com/halostatue/fish-utils-net/releases)
+[![MIT](https://img.shields.io/badge/licence-MIT-blue?style=for-the-badge "MIT")](https://github.com/halostatue/fish-brew/blob/main/LICENCE.md)
 
 Network and SSH utility functions for [fish shell][fish shell]. Most have been
 ported from my zsh dotfiles or from other dotfiles found over the years.
+
+> NOTE: The functions in this plugin are of questionable use and security except
+> `addr`, `certp`, and `def`. As such, those three are being released with the
+> next version of `halostatue/fish-utils` and this plugin is being deprecated
+> and archived.
 
 ## Installation
 
@@ -21,7 +27,7 @@ fisher install halostatue/fish-utils-net # fisher 4.0+
 
 ### addr
 
-Shows IPv4 addresses for the given interface or all interfaces.
+Shows IPv4 and IPv6 addresses for the given interface or all interfaces.
 
 ```fish
 addr
@@ -33,7 +39,7 @@ Prints the TLS certificate for the domain provided using OpenSSL.
 
 ### def
 
-Retreives the definition for a word from `dict.org`.
+Retrieves the definition for a word from `dict.org`.
 
 ```fish
 def dictionary

@@ -1,12 +1,13 @@
 # Licence
 
-- SPDX-License-Identifier: [MIT][mit]
+<!-- SPDX-License-Identifier: MIT -->
 
-- Copyright © 2020-2025 Austin Ziegler
-- Portions copyright © Carlos Becker <https://carlosbecker.com>
-- Portions copyright © 2010 by Ryan Tomayko <https://tomayko.com/about>
+`halostatue/fish-utils-net` is copyright © 2020-2025 Austin Ziegler and is
+licensed under the MIT license. Portions copyright © Carlos Becker
+<https://carlosbecker.com>. Portions copyright © 2010 by Ryan Tomayko
+<https://tomayko.com/about>
 
-The software in this repository is made available under the MIT license.
+- SPDX License Description: [MIT][mit]
 
 ## MIT License
 
